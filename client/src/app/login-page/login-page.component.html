@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="card">
+  <div class="card-content">
+    <span class="card-title">Войти в систему</span>
+    <div class="input-field">
+      <input formControlName="email" id="email" type="email" [ngClass]="{'invalid': form.invalid && form.touched}">
+      <label for="email">Email:</label>
+      <span class="helper-text red-text" *ngIf="form.invalid && form.touched">
+        <span *ngIf="email && email.invalid && email.touched">Email не должен быть пустым. </span>
+        <span *ngIf="email && email.invalid && email.touched">Введите корректный email адрес</span>
+      </span>
+    </div>
+    <div class="input-field">
+      <input formControlName="password" id="password" type="password"
+        [ngClass]="{'invalid': form.invalid && form.touched}">
+      <label for="password">Пароль:</label>
+      <span class="helper-text red-text" *ngIf="form.invalid && form.touched">
+        <span *ngIf="password && password.invalid && password.touched">Введите корректный пароль</span>
+      </span>
+    </div>
+  </div>
+  <div class=" card-action">
+    <button type="submit" class="modal-action btn waves-effect" [disabled]="form.invalid || form.disabled">
+      Войти
+    </button>
+  </div>
+</form>
